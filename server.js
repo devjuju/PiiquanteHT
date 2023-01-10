@@ -1,5 +1,6 @@
+// Étape 1 : Démarrer le serveur backend
+// Projet initialisé
 // SOURCE (cours) : Passez au Full Stack avec Node.js, Express et MongoDB 
-// Créez une application Express
 const http = require('http');
 const app = require('./app');
 // Ajouter la normalisation de port, la gestion d'erreur et du logging basique à votre serveur Node le rend plus constant et plus facile à déboguer.
@@ -17,7 +18,7 @@ const normalizePort = val => {
 // la fonction normalizePort renvoie un port valide, qu'il soit fourni sous la forme d'un numéro ou d'une chaîne ;
 const port = normalizePort(process.env.PORT ||'3000');
 app.set('port', port);
-// la fonction errorHandler  recherche les différentes erreurs et les gère de manière appropriée. Elle est ensuite enregistrée dans le serveur ;
+// la fonction errorHandler recherche les différentes erreurs et les gère de manière appropriée. Elle est ensuite enregistrée dans le serveur ;
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;

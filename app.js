@@ -1,17 +1,16 @@
+// Étape 1 : Démarrer le serveur backend
+// Projet initialisé
 // SOURCE (cours) : Passez au Full Stack avec Node.js, Express et MongoDB 
 // Créez une application Express
-// Le framework Express est installé et enregistré dans le  package.json  avec   npm install express  .
-// Créez un fichier app.js , où vous placerez votre application Express :
-// Cette application Express contient quatre éléments de middleware :
+// Le framework Express est installé et enregistré dans le  package.json avec npm install express.
 const express = require('express');
 const mongoose = require('mongoose');
 const stuffRoutes = require('./routes/stuff');
+const userRoutes = require('./routes/user');
+const path = require('path');
 
 // MongoDB Atlas permet d'héberger gratuitement une base de données MongoDB.
 // Le package Mongoose facilite les interactions entre votre application Express et votre base de données MongoDB.
-// On définit l'accès à la bdd MongoDB (avec les vard'env pour ne pas transmettre les logs de connexion en clair)
-/* Test de connexion à la base de données */
-// getting-started.js
 mongoose.connect('mongodb+srv://piiquante00user:78R99E9Z989E@cluster0.zogiiyb.mongodb.net/test',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -29,8 +28,9 @@ app.use((req, res, next) => {
   });
 
   app.use(express.json());
-  
+  app.use('/images', express.static(path.join(__dirname, 'images')));
   app.use('/api/stuff', stuffRoutes);
+  app.use('/api/auth', userRoutes);
 
-
+   
   module.exports = app;
