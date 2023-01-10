@@ -1,3 +1,5 @@
+// Étape 4 : Construire la route Sauce de l’API
+// Le Modèle Sauce
 // SOURCE (cours) : Passez au Full Stack avec Node.js, Express et MongoDB 
 // Créez un schéma de données
 // Créez un schéma Thing
