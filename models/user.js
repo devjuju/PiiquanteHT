@@ -7,8 +7,9 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');// mongoose-unique-validator  améliore les messages d'erreur lors de l'enregistrement de données uniques.
 
 const userSchema = mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User"},
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
 });
 
 userSchema.plugin(uniqueValidator);
