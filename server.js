@@ -3,6 +3,40 @@
 // SOURCE (cours) : Passez au Full Stack avec Node.js, Express et MongoDB 
 const http = require('http');
 const app = require('./app');
+const helmet = require("helmet");
+app.use(
+  helmet({
+    referrerPolicy: { policy: "no-referrer" },
+    referrerPolicy: { policy: ["origin", "unsafe-url"] },
+    frameguard: { action: "deny" },
+    contentSecurityPolicy: {
+      useDefaults: false,
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "example.com"],
+        objectSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+      },
+    },
+    crossOriginEmbedderPolicy: { policy: "credentialless" },
+    crossOriginOpenerPolicy: true,
+    crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" },
+    crossOriginOpenerPolicy: { policy: "unsafe-none" },
+    crossOriginResourcePolicy: true,
+    crossOriginResourcePolicy: { policy: "same-site" },
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    expectCt: { maxAge: 86400, enforce: true },
+    hsts: { maxAge: 63072000, preload: true },
+    dnsPrefetchControl: { allow: true },
+    permittedCrossDomainPolicies: { permittedPolicies: "none" },
+  })
+);
+
+app.use(helmet.noSniff("dont-sniff-mimetype"));
+app.use(helmet.originAgentCluster());
+app.use(helmet.ieNoOpen("ienoopen"));
+app.use(helmet.hidePoweredBy("hide-powered-by"));
+app.use(helmet.xssFilter("x-xss-protection"));
 // Ajouter la normalisation de port, la gestion d'erreur et du logging basique à votre serveur Node le rend plus constant et plus facile à déboguer.
 const normalizePort = val => {
   const port = parseInt(val, 10);

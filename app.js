@@ -5,9 +5,14 @@
 // Le framework Express est installé et enregistré dans le  package.json avec npm install express.
 const express = require('express');
 const mongoose = require('mongoose');
-const stuffRoutes = require('./routes/stuff');
-const userRoutes = require('./routes/user');
 const path = require('path');
+const userRoutes = require('./routes/user');
+require("dotenv").config();
+
+
+
+const sauceRoutes = require('./routes/sauce');
+const userRoutes = require("./routes/user");
 
 // MongoDB Atlas permet d'héberger gratuitement une base de données MongoDB.
 // Le package Mongoose facilite les interactions entre votre application Express et votre base de données MongoDB.
@@ -28,9 +33,9 @@ app.use((req, res, next) => {
   });
 
   app.use(express.json());
-  app.use('/images', express.static(path.join(__dirname, 'images')));
-  app.use('/api/stuff', stuffRoutes);
-  app.use('/api/auth', userRoutes);
+  app.use("/api/sauces", sauceRoutes);
+  app.use("/api/auth", userRoutes);
+  app.use("/images", express.static(path.join(__dirname, "images")));
 
    
   module.exports = app;
