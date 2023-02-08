@@ -6,10 +6,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const userRoutes = require('./routes/user');
-require("dotenv").config();
-
-
 
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require("./routes/user");

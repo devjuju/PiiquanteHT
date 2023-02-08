@@ -3,6 +3,8 @@
 // SOURCE (cours) : Passez au Full Stack avec Node.js, Express et MongoDB
 // Acceptez les fichiers entrants avec multer
 // Configurez le middleware de gestion des fichiers
+// Récupération des images stockées sur le serveur
+// IMPORT
 const multer = require('multer');
 
 const MIME_TYPES = {
